@@ -1,0 +1,82 @@
+<div class="body" [class]="pokemon?.types[0].type.name">
+  <img src="assets/return-btn.png" (click)="retour()" class="return-btn">
+  <div class="pokemon-section">
+    <img src={{pokemon?.sprites.front_default}}  class="pokemon-picture">
+    <p class="pokemon-name">{{pokemon?.name | titlecase}}</p>
+    <div style="margin-bottom: 50px">
+      <span class="pokemon-type" [class]="el.type.name" *ngFor="let el of pokemon?.types">{{el.type.name}}</span>
+    </div>
+    <div class="description">{{pokemonDescription}}</div>
+    <div>
+      <div style="margin-bottom: 60px">
+        <span class="pokemon-type" [class]="pokemon?.types[0].type.name" *ngIf="isStat">Stats</span>
+        <span class="pokemon-type-unselected" [class]="'color-'+pokemon?.types[0].type.name" *ngIf="!isStat" (click)="goToStat()">Stats</span>
+        <span class="pokemon-type" [class]="pokemon?.types[0].type.name" *ngIf="!isStat">Evolutions</span>
+        <span class="pokemon-type-unselected" [class]="'color-'+pokemon?.types[0].type.name" *ngIf="isStat" (click)="goToEvolution()">Evolutions</span>
+      </div>
+      <div class="content">
+        <div *ngIf="isStat">
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px;padding-right: 8px;" [class]="'color-'+pokemon?.types[0].type.name">HP</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[0].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[0].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px"[class]="'color-'+pokemon?.types[0].type.name">ATK</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[1].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[1].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">DEF</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[2].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[2].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px 2px 12px 12px;" [class]="'color-'+pokemon?.types[0].type.name">SATK</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[3].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[3].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px 2px 12px 12px;" [class]="'color-'+pokemon?.types[0].type.name">SDEF</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[4].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[4].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+          <div style="display: flex;justify-content: center">
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">SPD</span>
+            <span style="margin: 12px" [class]="'color-'+pokemon?.types[0].type.name">{{pokemon?.stats[5].base_stat}}</span>
+            <div class="bar-stat">
+              <div class="bar-stat-value" [ngStyle]="{'width' : pokemon?.stats[5].base_stat * 240 / 130 +'px'}" [class]="pokemon?.types[0].type.name"></div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!isStat">
+          <div style="display: flex; justify-content: space-around">
+            <div *ngFor="let evo of evoChain; last as isLast" style="display: flex; justify-content: space-around">
+              <div>
+                <img src={{evo?.img}}>
+                <p style="text-align: center">{{evo.species_name | titlecase}}</p>
+              </div>
+              <div *ngIf="!isLast" style="display: flex;align-items: center">
+                <svg width="98" height="12" viewBox="0 0 98 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 6H95.0388" [ngStyle]="{'stroke' : color}"  stroke-width="4" stroke-linecap="round"/>
+                  <path d="M91.5 2.28744L95.0388 6" [ngStyle]="{'stroke' : color}" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M91.5 9.28744L95.0388 6" [ngStyle]="{'stroke' : color}" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

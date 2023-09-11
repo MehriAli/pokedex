@@ -1,0 +1,13 @@
+<body>
+  <div class="pokemon-search">
+    <img src="../../assets/pokemon-ball.png" class="img-section">
+    <div class="search-section">
+      <label>Pokemon Name or Id</label>
+      <input type="text"  [(ngModel)]="searchText">
+    </div>
+    <div class="submit-section">
+      <button class="btn" (click)="search()">Search</button>
+      <button class="btn" (click)="random()">Random</button>
+    </div>
+  </div>
+</body>

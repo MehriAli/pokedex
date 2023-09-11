@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+.return-btn{
+  width: 40px;
+  height: 68px;
+  position: fixed;
+  top: 110px;
+  left: 70px;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.body{
+  background: #FE5858;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p{
+  font-size: 75px;
+  font-weight: 400;
+  line-height: 94px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+  font-family: fantasy;
+}
+
+.img-error{
+  width: 360px;
+  margin-bottom: 120px;
+}
